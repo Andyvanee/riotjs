@@ -57,4 +57,9 @@ describe("$.render", function() {
     assert.equal($.render("\\{x}", { x: 'x' }), "\\x");
   });
 
+  it("Escapes HTML in data", function(){
+    var data = '<p>"x</p>';
+    var expected = "&lt;p&gt;&quot;x&lt;/p&gt;";
+    assert.equal($.render("{x}", {x: data}), expected);
+  });
 });
